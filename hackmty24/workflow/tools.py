@@ -10,7 +10,6 @@ import subprocess
 import os
 from pathlib import Path
 
-openai.api_key = "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"  
 
 
 def generate_text(prompt : str):
