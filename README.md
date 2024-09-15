@@ -1,5 +1,3 @@
-# NewtechIntelligence-CascadeOptimization
-
 # DEVPOST HACKMTY: Cascade Optimizer
 
 ## GENERAL INFORMATION
