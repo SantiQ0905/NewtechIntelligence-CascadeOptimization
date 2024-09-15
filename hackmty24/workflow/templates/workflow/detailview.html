@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail {{ object.name }}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'workflow/listview.css' %}">
+</head>
+<body>
+    <p id="username">{{ object.name }}</p>
+
+    <div id="task-table-container">
+        <form method="post">
+        <table>
+            <thead>
+                <tr>
+                    <th>Hours</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                    {% for t in tasks %}
+                    {% csrf_token %}
+                    <tr>
+                        <td>{{ t.hours }}</td>
+                        <td>{{ t.title }}</td>
+                        <td>{{ t.description }}</td>
+                        <td>
+                            <span class="{% if t.completed %}completed{% else %}not-completed{% endif %}">
+                                {% if t.completed %}
+                                Completed
+                                {% else %}
+                                <input type="checkbox" name="{{ t.pk }}" value="1">
+                                {% endif %}
+                            </span>
+                        </td>
+                    </tr>
+                    {% endfor %}
+            </tbody>
+        </table>
+        <button type="submit" class="submit">Update Status</button>
+        <a href="http://127.0.0.1:8000/tasks/report/2" class="submit">Generate Report</a>
+        </form>
+    </div>
+</body>
+</html>

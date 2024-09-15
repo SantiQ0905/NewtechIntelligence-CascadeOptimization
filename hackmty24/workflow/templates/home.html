@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cascade Optimizer</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Cascade Optimizer</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="{% url 'workflow:list' %}">Task List</a></li>
+            <li><a href="{% url 'workflow:create' %} ">Create Task</a></li>
+            <li><a href="{% url 'admin:index' %}">Admin</a></li>
+        </ul>
+    </nav>
+
+    <section class="content">
+        <h2>Welcome to Cascade Optimizer</h2>
+        <p>This tool allows you to manage the productivity of your business. Feel free to explore its utilities!</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Cascade Optimizer. All rights reserved.</p>
+    </footer>
+</body>
+</html>

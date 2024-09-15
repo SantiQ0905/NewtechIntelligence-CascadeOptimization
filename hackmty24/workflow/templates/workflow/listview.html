@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View task list</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'workflow/listview.css' %}">
+</head>
+<body>
+    {% for user in users %}
+    <a href="{% url 'workflow:detail' user.pk %}" id="username">{{ user.name }} </a>
+    <div id="task-table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Hours</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for t in user.tasks %}
+                <tr>
+                    <td>{{ t.hours }}</td>
+                    <td>{{ t.title }}</td>
+                    <td>{{ t.description }}</td>
+                    <td>
+                        <span class="{% if t.completed %}completed{% else %}not-completed{% endif %}">
+                            {{ t.completed|yesno:"Completed,Not completed" }}
+                        </span>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endfor %}
+</body>
+</html>
